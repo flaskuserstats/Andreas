@@ -1,0 +1,14 @@
+<canvas id="myChart"></canvas>
+<script>
+const ctx = document.getElementById('myChart');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: {{ labels|safe }},
+    datasets: [{
+      label: 'Werte',
+      data: {{ werte|safe }},
+    }]
+  }
+});
+</script>

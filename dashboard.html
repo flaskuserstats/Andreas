@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Hallo {{ current_user.username }}</h2>
+
+    <!-- Formular zur Dateneingabe -->
+    <form method="POST">
+        <label>Datum:</label>
+        <input type="date" name="datum" required><br><br>
+
+        <label>Wert:</label>
+        <input type="number" name="wert" step="0.01" required><br><br>
+
+        <input type="submit" value="Eintragen">
+    </form>
+
+    <h3>Deine Einträge:</h3>
+    <ul>
+        {% for entry in entries %}
+            <li>{{ entry.datum.strftime('%Y-%m-%d') }}: {{ entry.wert }}</li>
+        {% else %}
+            <li>Keine Einträge vorhanden.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
